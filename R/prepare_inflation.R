@@ -52,6 +52,26 @@ inflation <- inflation_raw %>%
   # only select important variables
   select(age, sex, education, perception, expectation, year, quarter, yyyyqq, date)
 
+
+
+# inflationV2 <- inflation
+# inflationV2$month <- inflationV2$quarter*3-2
+# inflationV2$date2 <- as.Date(paste0(inflationV2$year, "-", inflationV2$month, "-01"))
+# inflationV2 %>% 
+#   group_by(date2) %>% 
+#   summarise(across(c(perception, expectation),
+#                    ~ mean(., na.rm = TRUE)),
+#             .groups = "drop") %>% 
+#   pivot_longer(c(expectation, perception)) %>% 
+#   ungroup() %>% 
+#   ggplot() +
+#   geom_line(aes(date2, value, color = name)) +
+#   ylim(c(0,10)) + 
+#   theme_minimal() +
+#   ylab("subjective inflation in %-points") +
+#   labs(color = "") +
+#   theme(legend.position = c(.1, .9)) +
+#   NULL
 #----export-inflation---
 inflation_path <- here("data", "processed", "inflation.rds")
 fs::dir_create(fs::path_dir(inflation_path))
