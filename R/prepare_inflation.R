@@ -54,7 +54,7 @@ inflation <- inflation_raw %>%
 
 
 
-inflationV2 <- inflation
+inflationV2 <- inflation #
 inflationV2$month <- inflationV2$quarter*3-2
 inflationV2$date2 <- as.Date(paste0(inflationV2$year, "-", inflationV2$month, "-01"))
 # inflationV2 %>% 
